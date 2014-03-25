@@ -1,5 +1,5 @@
 <label for="salary">Ingrese el salario del empleado</label>
-<input type="text" id="salary" class="form-control" ng-model="salary" ng-change="calculate()">
+<input type="number" id="salary" class="form-control" ng-model="salary" ng-change="calculate()">
 <p class="text-center alert alert-warning" ng-show="salary < minimum">Sueldo menor a mínimo de {{minimum}}</p>
 <table class="table table-striped">
   <thead>
