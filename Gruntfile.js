@@ -349,6 +349,14 @@ module.exports = function (grunt) {
         configFile: 'karma.conf.js',
         singleRun: true
       }
+    },
+    shell: {
+      push: {
+        command: 'git subtree push --prefix dist origin gh-pages',
+        options: {
+          stdout: true
+        }
+      }
     }
   });
 

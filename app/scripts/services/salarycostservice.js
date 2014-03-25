@@ -4,6 +4,7 @@ angular.module('hiringCostsEcuadorApp')
   .service('SalaryCostService', function SalaryCostService(MinimumSalary) {
     return {
       calculate: function(salary) {
+        salary = Number(salary);
         var CostConcept = function() {
           this.name = '';
           this.frequency = 'mensual';
@@ -37,6 +38,11 @@ angular.module('hiringCostsEcuadorApp')
         salarioRecibirEmpleado.name = 'Salario a recibir por Empleado (sin descontar impuesto a la renta)';
         salarioRecibirEmpleado.value = salary - iess.value;
         result.push(salarioRecibirEmpleado);
+
+        var salarioPagarEmpleador = new CostConcept();
+        salarioPagarEmpleador.name = 'Salario a pagar por Empleador';
+        salarioPagarEmpleador.value = salary + iessE.value;
+        result.push(salarioPagarEmpleador);
 
         // decimo tercero
         var d3ro = new CostConcept();
@@ -74,6 +80,19 @@ angular.module('hiringCostsEcuadorApp')
                       (d4to.value);
         anualE.bold = true;
         result.push(anualE);
+
+        // Anualizado con fondos de reserva
+        var anualEFR = new CostConcept();
+        anualEFR.name = 'Total para el Empleador (Incluye fondos de reserva)';
+        anualEFR.frequency = 'anual';
+        anualEFR.value = (salary * 12) +
+                      (iess.value * -12) +
+                      (iessE.value * 12) +
+                      (d3ro.value) +
+                      (d4to.value) +
+                      (fondosReserva.value * 12);
+        anualEFR.bold = true;
+        result.push(anualEFR);
         return result;
       }
     }
