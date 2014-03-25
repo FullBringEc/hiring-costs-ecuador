@@ -89,3 +89,11 @@ body {
         border-bottom: 0;
     }
 }
+
+input#salary, .value {
+  text-align: right;
+}
+
+.highlight {
+  font-weight: bold;
+}
