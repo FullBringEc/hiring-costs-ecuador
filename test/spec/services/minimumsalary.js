@@ -13,6 +13,7 @@ describe('Service: MinimumSalary', function () {
 
   it('should do something', function () {
     expect(!!MinimumSalary).toBe(true);
+    expect(MinimumSalary).toBe(340);
   });
 
 });

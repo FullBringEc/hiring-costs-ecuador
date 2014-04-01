@@ -7,13 +7,14 @@ describe('Service: Salarycostservice', function () {
 
   // instantiate service
   var Salarycostservice;
-  beforeEach(inject(function (_Salarycostservice_) {
-    Salarycostservice = _Salarycostservice_;
+  beforeEach(inject(function (_SalaryCostService_) {
+    Salarycostservice = _SalaryCostService_;
   }));
 
   it('should calculate a list of concepts from a salary', function () {
-    expect(Salarycostservice.calculate(340)).toBe([
-    ]);
+    expect(!!Salarycostservice).toBe(true);
+    var concepts = Salarycostservice.calculate(340);
+    expect(concepts.length).toBe(11);
   });
 
 });
